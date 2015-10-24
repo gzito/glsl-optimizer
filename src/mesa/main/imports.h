@@ -136,7 +136,9 @@ static inline float atanhf(float x) { return (logf(1.0f + x) - logf(1.0f - x)) /
 static inline int isblank(int ch) { return ch == ' ' || ch == '\t'; }
 #define strtoll(p, e, b) _strtoi64(p, e, b)
 #endif /* _MSC_VER < 1800 */
+#ifndef __S3E__
 #define strcasecmp(s1, s2) _stricmp(s1, s2)
+#endif
 #endif
 /*@}*/
 
@@ -531,14 +533,19 @@ _mesa_strtof( const char *s, char **end );
 extern unsigned int
 _mesa_str_checksum(const char *str);
 
+#ifndef __S3E__
 extern int
 _mesa_snprintf( char *str, size_t size, const char *fmt, ... ) PRINTFLIKE(3, 4);
+#else
+extern int
+_mesa_snprintf(char *str,size_t size,const char *fmt,...) PRINTFLIKE3;
+#endif
 
 extern int
 _mesa_vsnprintf(char *str, size_t size, const char *fmt, va_list arg);
 
 
-#if defined(_MSC_VER) && !defined(snprintf)
+#if defined(_MSC_VER) && !defined(snprintf) && !defined(__S3E__)
 #define snprintf _snprintf
 #endif
 

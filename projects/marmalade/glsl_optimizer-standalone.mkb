@@ -1,0 +1,20 @@
+#!/usr/bin/env mkb
+
+options
+{
+	s3e-data-dir=../../tests
+	optimise-speed=1
+	cxx11
+}
+
+subprojects
+{
+	glsl_optimizer
+	iwgl
+}
+
+files
+{
+	(../../tests)
+	glsl_optimizer-standalone.cpp
+}

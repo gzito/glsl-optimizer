@@ -107,9 +107,15 @@ struct _mesa_glsl_parse_state {
          && this->language_version >= required_version;
    }
 
+#ifndef __S3E__
    bool check_version(unsigned required_glsl_version,
                       unsigned required_glsl_es_version,
                       YYLTYPE *locp, const char *fmt, ...) PRINTFLIKE(5, 6);
+#else
+   bool check_version(unsigned required_glsl_version,
+					  unsigned required_glsl_es_version,
+					  YYLTYPE *locp,const char *fmt,...) PRINTFLIKE4;
+#endif
 
    bool check_precision_qualifiers_allowed(YYLTYPE *locp)
    {

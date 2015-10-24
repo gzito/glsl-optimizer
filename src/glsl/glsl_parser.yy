@@ -24,7 +24,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#ifndef _MSC_VER
+#if !defined(_MSC_VER) || defined(__S3E__)
 #include <strings.h>
 #endif
 #include <assert.h>

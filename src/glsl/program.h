@@ -39,13 +39,24 @@ _mesa_glsl_compile_shader(struct gl_context *ctx, struct gl_shader *shader,
 extern void
 link_shaders(struct gl_context *ctx, struct gl_shader_program *prog);
 
+#ifndef __S3E__
 extern void
 linker_error(struct gl_shader_program *prog, const char *fmt, ...)
    PRINTFLIKE(2, 3);
 
 extern void
-linker_warning(struct gl_shader_program *prog, const char *fmt, ...)
-   PRINTFLIKE(2, 3);
+linker_warning(struct gl_shader_program *prog,const char *fmt,...)
+PRINTFLIKE(2,3);
+
+#else
+extern void
+linker_error(struct gl_shader_program *prog,const char *fmt,...)
+PRINTFLIKE2;
+
+extern void
+linker_warning(struct gl_shader_program *prog,const char *fmt,...)
+PRINTFLIKE2;
+#endif
 
 extern long
 parse_program_resource_name(const GLchar *name,

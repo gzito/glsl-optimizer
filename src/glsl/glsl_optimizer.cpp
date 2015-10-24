@@ -601,6 +601,9 @@ static void find_shader_variables(glslopt_shader* sh, exec_list* ir)
 
 glslopt_shader* glslopt_optimize (glslopt_ctx* ctx, glslopt_shader_type type, const char* shaderSource, unsigned options)
 {
+// 	// GZ : enables bison trace
+// 	_mesa_glsl_debug = 1 ;
+
 	glslopt_shader* shader = new (ctx->mem_ctx) glslopt_shader ();
 
 	PrintGlslMode printMode = kPrintGlslVertex;

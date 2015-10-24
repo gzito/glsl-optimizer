@@ -1273,8 +1273,10 @@ void ir_print_glsl_visitor::visit(ir_assignment *ir)
 
 
 #ifdef _MSC_VER
+#ifndef __S3E__
 #define isnan(x) _isnan(x)
 #define isinf(x) (!_finite(x))
+#endif
 #endif
 
 #define fpcheck(x) (isnan(x) || isinf(x))

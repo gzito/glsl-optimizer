@@ -1,24 +1,21 @@
-/* A Bison parser, made by GNU Bison 2.3.  */
+/* A Bison parser, made by GNU Bison 2.7.  */
 
-/* Skeleton interface for Bison's Yacc-like parsers in C
-
-   Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005, 2006
-   Free Software Foundation, Inc.
-
-   This program is free software; you can redistribute it and/or modify
+/* Bison interface for Yacc-like parsers in C
+   
+      Copyright (C) 1984, 1989-1990, 2000-2012 Free Software Foundation, Inc.
+   
+   This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
-   any later version.
-
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+   
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-
+   
    You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor,
-   Boston, MA 02110-1301, USA.  */
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -29,9 +26,19 @@
    special exception, which will cause the skeleton and the resulting
    Bison output files to be licensed under the GNU General Public
    License without this special exception.
-
+   
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
+
+#ifndef YY__MESA_GLSL_SRC_GLSL_GLSL_PARSER_H_INCLUDED
+# define YY__MESA_GLSL_SRC_GLSL_GLSL_PARSER_H_INCLUDED
+/* Enabling traces.  */
+#ifndef YYDEBUG
+# define YYDEBUG 0
+#endif
+#if YYDEBUG
+extern int _mesa_glsl_debug;
+#endif
 
 /* Tokens.  */
 #ifndef YYTOKENTYPE
@@ -271,245 +278,14 @@
      THEN = 487
    };
 #endif
-/* Tokens.  */
-#define ATTRIBUTE 258
-#define CONST_TOK 259
-#define BOOL_TOK 260
-#define FLOAT_TOK 261
-#define INT_TOK 262
-#define UINT_TOK 263
-#define BREAK 264
-#define CONTINUE 265
-#define DO 266
-#define ELSE 267
-#define FOR 268
-#define IF 269
-#define DISCARD 270
-#define RETURN 271
-#define SWITCH 272
-#define CASE 273
-#define DEFAULT 274
-#define BVEC2 275
-#define BVEC3 276
-#define BVEC4 277
-#define IVEC2 278
-#define IVEC3 279
-#define IVEC4 280
-#define UVEC2 281
-#define UVEC3 282
-#define UVEC4 283
-#define VEC2 284
-#define VEC3 285
-#define VEC4 286
-#define CENTROID 287
-#define IN_TOK 288
-#define OUT_TOK 289
-#define INOUT_TOK 290
-#define UNIFORM 291
-#define VARYING 292
-#define SAMPLE 293
-#define NOPERSPECTIVE 294
-#define FLAT 295
-#define SMOOTH 296
-#define MAT2X2 297
-#define MAT2X3 298
-#define MAT2X4 299
-#define MAT3X2 300
-#define MAT3X3 301
-#define MAT3X4 302
-#define MAT4X2 303
-#define MAT4X3 304
-#define MAT4X4 305
-#define SAMPLER1D 306
-#define SAMPLER2D 307
-#define SAMPLER3D 308
-#define SAMPLERCUBE 309
-#define SAMPLER1DSHADOW 310
-#define SAMPLER2DSHADOW 311
-#define SAMPLERCUBESHADOW 312
-#define SAMPLER1DARRAY 313
-#define SAMPLER2DARRAY 314
-#define SAMPLER1DARRAYSHADOW 315
-#define SAMPLER2DARRAYSHADOW 316
-#define SAMPLERCUBEARRAY 317
-#define SAMPLERCUBEARRAYSHADOW 318
-#define ISAMPLER1D 319
-#define ISAMPLER2D 320
-#define ISAMPLER3D 321
-#define ISAMPLERCUBE 322
-#define ISAMPLER1DARRAY 323
-#define ISAMPLER2DARRAY 324
-#define ISAMPLERCUBEARRAY 325
-#define USAMPLER1D 326
-#define USAMPLER2D 327
-#define USAMPLER3D 328
-#define USAMPLERCUBE 329
-#define USAMPLER1DARRAY 330
-#define USAMPLER2DARRAY 331
-#define USAMPLERCUBEARRAY 332
-#define SAMPLER2DRECT 333
-#define ISAMPLER2DRECT 334
-#define USAMPLER2DRECT 335
-#define SAMPLER2DRECTSHADOW 336
-#define SAMPLERBUFFER 337
-#define ISAMPLERBUFFER 338
-#define USAMPLERBUFFER 339
-#define SAMPLER2DMS 340
-#define ISAMPLER2DMS 341
-#define USAMPLER2DMS 342
-#define SAMPLER2DMSARRAY 343
-#define ISAMPLER2DMSARRAY 344
-#define USAMPLER2DMSARRAY 345
-#define SAMPLEREXTERNALOES 346
-#define IMAGE1D 347
-#define IMAGE2D 348
-#define IMAGE3D 349
-#define IMAGE2DRECT 350
-#define IMAGECUBE 351
-#define IMAGEBUFFER 352
-#define IMAGE1DARRAY 353
-#define IMAGE2DARRAY 354
-#define IMAGECUBEARRAY 355
-#define IMAGE2DMS 356
-#define IMAGE2DMSARRAY 357
-#define IIMAGE1D 358
-#define IIMAGE2D 359
-#define IIMAGE3D 360
-#define IIMAGE2DRECT 361
-#define IIMAGECUBE 362
-#define IIMAGEBUFFER 363
-#define IIMAGE1DARRAY 364
-#define IIMAGE2DARRAY 365
-#define IIMAGECUBEARRAY 366
-#define IIMAGE2DMS 367
-#define IIMAGE2DMSARRAY 368
-#define UIMAGE1D 369
-#define UIMAGE2D 370
-#define UIMAGE3D 371
-#define UIMAGE2DRECT 372
-#define UIMAGECUBE 373
-#define UIMAGEBUFFER 374
-#define UIMAGE1DARRAY 375
-#define UIMAGE2DARRAY 376
-#define UIMAGECUBEARRAY 377
-#define UIMAGE2DMS 378
-#define UIMAGE2DMSARRAY 379
-#define IMAGE1DSHADOW 380
-#define IMAGE2DSHADOW 381
-#define IMAGE1DARRAYSHADOW 382
-#define IMAGE2DARRAYSHADOW 383
-#define COHERENT 384
-#define VOLATILE 385
-#define RESTRICT 386
-#define READONLY 387
-#define WRITEONLY 388
-#define ATOMIC_UINT 389
-#define STRUCT 390
-#define VOID_TOK 391
-#define WHILE 392
-#define IDENTIFIER 393
-#define TYPE_IDENTIFIER 394
-#define NEW_IDENTIFIER 395
-#define FLOATCONSTANT 396
-#define INTCONSTANT 397
-#define UINTCONSTANT 398
-#define BOOLCONSTANT 399
-#define FIELD_SELECTION 400
-#define LEFT_OP 401
-#define RIGHT_OP 402
-#define INC_OP 403
-#define DEC_OP 404
-#define LE_OP 405
-#define GE_OP 406
-#define EQ_OP 407
-#define NE_OP 408
-#define AND_OP 409
-#define OR_OP 410
-#define XOR_OP 411
-#define MUL_ASSIGN 412
-#define DIV_ASSIGN 413
-#define ADD_ASSIGN 414
-#define MOD_ASSIGN 415
-#define LEFT_ASSIGN 416
-#define RIGHT_ASSIGN 417
-#define AND_ASSIGN 418
-#define XOR_ASSIGN 419
-#define OR_ASSIGN 420
-#define SUB_ASSIGN 421
-#define INVARIANT 422
-#define PRECISE 423
-#define LOWP 424
-#define MEDIUMP 425
-#define HIGHP 426
-#define SUPERP 427
-#define PRECISION 428
-#define VERSION_TOK 429
-#define EXTENSION 430
-#define LINE 431
-#define COLON 432
-#define EOL 433
-#define INTERFACE 434
-#define OUTPUT 435
-#define PRAGMA_DEBUG_ON 436
-#define PRAGMA_DEBUG_OFF 437
-#define PRAGMA_OPTIMIZE_ON 438
-#define PRAGMA_OPTIMIZE_OFF 439
-#define PRAGMA_INVARIANT_ALL 440
-#define LAYOUT_TOK 441
-#define ASM 442
-#define CLASS 443
-#define UNION 444
-#define ENUM 445
-#define TYPEDEF 446
-#define TEMPLATE 447
-#define THIS 448
-#define PACKED_TOK 449
-#define GOTO 450
-#define INLINE_TOK 451
-#define NOINLINE 452
-#define PUBLIC_TOK 453
-#define STATIC 454
-#define EXTERN 455
-#define EXTERNAL 456
-#define LONG_TOK 457
-#define SHORT_TOK 458
-#define DOUBLE_TOK 459
-#define HALF 460
-#define FIXED_TOK 461
-#define UNSIGNED 462
-#define INPUT_TOK 463
-#define HVEC2 464
-#define HVEC3 465
-#define HVEC4 466
-#define DVEC2 467
-#define DVEC3 468
-#define DVEC4 469
-#define FVEC2 470
-#define FVEC3 471
-#define FVEC4 472
-#define SAMPLER3DRECT 473
-#define SIZEOF 474
-#define CAST 475
-#define NAMESPACE 476
-#define USING 477
-#define RESOURCE 478
-#define PATCH 479
-#define SUBROUTINE 480
-#define ERROR_TOK 481
-#define COMMON 482
-#define PARTITION 483
-#define ACTIVE 484
-#define FILTER 485
-#define ROW_MAJOR 486
-#define THEN 487
-
-
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-#line 99 "src/glsl/glsl_parser.yy"
 {
+/* Line 2058 of yacc.c  */
+#line 99 "src/glsl/glsl_parser.yy"
+
    int n;
    float real;
    const char *identifier;
@@ -544,16 +320,15 @@ typedef union YYSTYPE
       ast_node *then_statement;
       ast_node *else_statement;
    } selection_rest_statement;
-}
-/* Line 1529 of yacc.c.  */
-#line 550 "src/glsl/glsl_parser.h"
-	YYSTYPE;
+
+
+/* Line 2058 of yacc.c  */
+#line 327 "src/glsl/glsl_parser.h"
+} YYSTYPE;
+# define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
-# define YYSTYPE_IS_TRIVIAL 1
 #endif
-
-
 
 #if ! defined YYLTYPE && ! defined YYLTYPE_IS_DECLARED
 typedef struct YYLTYPE
@@ -569,3 +344,18 @@ typedef struct YYLTYPE
 #endif
 
 
+#ifdef YYPARSE_PARAM
+#if defined __STDC__ || defined __cplusplus
+int _mesa_glsl_parse (void *YYPARSE_PARAM);
+#else
+int _mesa_glsl_parse ();
+#endif
+#else /* ! YYPARSE_PARAM */
+#if defined __STDC__ || defined __cplusplus
+int _mesa_glsl_parse (struct _mesa_glsl_parse_state *state);
+#else
+int _mesa_glsl_parse ();
+#endif
+#endif /* ! YYPARSE_PARAM */
+
+#endif /* !YY__MESA_GLSL_SRC_GLSL_GLSL_PARSER_H_INCLUDED  */

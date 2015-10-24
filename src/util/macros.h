@@ -81,10 +81,12 @@ do {                        \
 #define FLATTEN
 #endif
 
+#if !defined(__S3E__)
 #ifdef HAVE_FUNC_ATTRIBUTE_FORMAT
 #define PRINTFLIKE(f, a) __attribute__ ((format(__printf__, f, a)))
 #else
 #define PRINTFLIKE(f, a)
+#endif
 #endif
 
 #ifdef HAVE_FUNC_ATTRIBUTE_MALLOC

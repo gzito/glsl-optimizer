@@ -32,6 +32,7 @@
 /*
  * MSVC hacks.
  */
+#ifndef __S3E__
 #if defined(_MSC_VER)
    /*
     * Visual Studio 2012 will complain if we define the `inline` keyword, but
@@ -103,7 +104,7 @@
 #    define restrict /* */
 #  endif
 #endif
-
+#endif	// __S3E__
 
 /*
  * C99 __func__ macro
@@ -130,6 +131,7 @@
 #  endif
 #endif
 
+#ifndef __S3E__
 
 /* Simple test case for debugging */
 #if 0
@@ -141,5 +143,14 @@ test_c99_compat_h(const void * restrict a,
 }
 #endif
 
+#endif	// __S3E__
+
+#if defined(__S3E__) 
+#ifdef _MSC_VER
+#define PRIiMAX		"I64i"
+#else
+#define PRIiMAX		"lli"
+#endif
+#endif
 
 #endif /* _C99_COMPAT_H_ */

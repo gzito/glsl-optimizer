@@ -302,7 +302,11 @@ bool ralloc_strncat(char **dest, const char *str, size_t n);
  *
  * \return The newly allocated string.
  */
+#ifndef __S3E__
 char *ralloc_asprintf (const void *ctx, const char *fmt, ...) PRINTFLIKE(2, 3) MALLOCLIKE;
+#else
+char *ralloc_asprintf(const void *ctx,const char *fmt,...) PRINTFLIKE2 MALLOCLIKE;
+#endif
 
 /**
  * Print to a string, given a va_list.
@@ -334,9 +338,15 @@ char *ralloc_vasprintf(const void *ctx, const char *fmt, va_list args) MALLOCLIK
  *
  * \return True unless allocation failed.
  */
+#ifndef __S3E__
 bool ralloc_asprintf_rewrite_tail(char **str, size_t *start,
 				  const char *fmt, ...)
 				  PRINTFLIKE(3, 4);
+#else
+bool ralloc_asprintf_rewrite_tail(char **str,size_t *start,
+					const char *fmt,...)
+					PRINTFLIKE3;
+#endif
 
 /**
  * Rewrite the tail of an existing string, starting at a given index.
@@ -378,8 +388,13 @@ bool ralloc_vasprintf_rewrite_tail(char **str, size_t *start, const char *fmt,
  *
  * \return True unless allocation failed.
  */
+#ifndef __S3E__
 bool ralloc_asprintf_append (char **str, const char *fmt, ...)
 			     PRINTFLIKE(2, 3);
+#else
+bool ralloc_asprintf_append(char **str,const char *fmt,...)
+				PRINTFLIKE2;
+#endif
 
 /**
  * Append formatted text to the supplied string, given a va_list.
@@ -418,6 +433,11 @@ size_t printf_length(const char *fmt, va_list untouched_args);
  *
  * which is more idiomatic in C++ than calling ralloc.
  */
+
+#if _MSC_VER >= 1900
+#pragma warning(disable:4291)
+#endif
+
 #define DECLARE_RALLOC_CXX_OPERATORS(TYPE)                               \
 private:                                                                 \
    static void _ralloc_destructor(void *p)                               \

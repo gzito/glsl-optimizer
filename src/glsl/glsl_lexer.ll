@@ -36,7 +36,7 @@
 
 static int classify_identifier(struct _mesa_glsl_parse_state *, const char *);
 
-#ifdef _MSC_VER
+#if defined(_MSC_VER) && !defined(__S3E__) 
 #define YY_NO_UNISTD_H
 #endif
 
@@ -120,7 +120,7 @@ literal_integer(char *text, int len, struct _mesa_glsl_parse_state *state,
    if (base == 16)
       digits += 2;
 
-#ifdef _MSC_VER
+#if defined(_MSC_VER) && !defined(__S3E__)
    unsigned __int64 value = _strtoui64(digits, NULL, base);
 #else
    unsigned long long value = strtoull(digits, NULL, base);
@@ -160,7 +160,8 @@ literal_integer(char *text, int len, struct _mesa_glsl_parse_state *state,
 %option prefix="_mesa_glsl_lexer_"
 %option extra-type="struct _mesa_glsl_parse_state *"
 %option warn nodefault
-
+%option debug
+ 
 	/* Note: When adding any start conditions to this list, you must also
 	 * update the "Internal compiler error" catch-all rule near the end of
 	 * this file. */

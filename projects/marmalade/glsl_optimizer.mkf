@@ -1,0 +1,75 @@
+library
+{
+	".,glsl_optimizer"
+}
+
+includepaths
+{
+	../../src/mesa
+	../../src
+#	../../include/c99
+	../../include
+	../../src/glsl
+}
+
+files
+{
+	(.)
+	["Header Files",glsl]
+    ../../src/glsl/ast.h
+    ../../src/glsl/builtin_type_macros.h
+    ../../src/glsl/glsl_optimizer.h
+    ../../src/glsl/glsl_parser.h
+    ../../src/glsl/glsl_parser_extras.h
+    ../../src/glsl/glsl_symbol_table.h
+    ../../src/glsl/glsl_types.h
+    ../../src/glsl/ir.h
+    ../../src/glsl/ir_basic_block.h
+    ../../src/glsl/ir_builder.h
+    ../../src/glsl/ir_expression_flattening.h
+    ../../src/glsl/ir_function_inlining.h
+    ../../src/glsl/ir_hierarchical_visitor.h
+    ../../src/glsl/ir_optimization.h
+    ../../src/glsl/ir_print_glsl_visitor.h
+    ../../src/glsl/ir_print_metal_visitor.h
+    ../../src/glsl/ir_print_visitor.h
+    ../../src/glsl/ir_rvalue_visitor.h
+    ../../src/glsl/ir_stats.h
+    ../../src/glsl/ir_uniform.h
+    ../../src/glsl/ir_unused_structs.h
+    ../../src/glsl/ir_variable_refcount.h
+    ../../src/glsl/ir_visitor.h
+    ../../src/glsl/linker.h
+    ../../src/glsl/link_uniform_block_active_visitor.h
+    ../../src/glsl/link_varyings.h
+    ../../src/glsl/list.h
+    ../../src/glsl/loop_analysis.h
+    ../../src/glsl/program.h
+    ../../src/glsl/s_expression.h
+    ../../src/glsl/standalone_scaffolding.h
+    ../../src/glsl/strtod.h
+	["Header Files",glsl,glcpp]
+    ../../src/glsl/glcpp/glcpp-parse.h
+    ../../src/glsl/glcpp/glcpp.h
+	["Header Files",mesa,program]
+    ../../src/mesa/program/hash_table.h
+    ../../src/mesa/program/prog_instruction.h
+    ../../src/mesa/program/prog_parameter.h
+    ../../src/mesa/program/prog_statevars.h
+    ../../src/mesa/program/symbol_table.h
+	["Header Files",mesa,main]
+    ../../src/mesa/main/compiler.h
+    ../../src/mesa/main/config.h
+    ../../src/mesa/main/context.h
+    ../../src/mesa/main/core.h
+    ../../src/mesa/main/dd.h
+    ../../src/mesa/main/glheader.h
+    ../../src/mesa/main/glminimal.h
+    ../../src/mesa/main/imports.h
+    ../../src/mesa/main/macros.h
+    ../../src/mesa/main/mtypes.h
+    ../../src/mesa/main/simple_list.h
+	["Header Files",mesa]
+    ../../src/util/hash_table.h
+    ../../src/util/ralloc.h
+}
