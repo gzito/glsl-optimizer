@@ -166,21 +166,36 @@ extern GLfloat _mesa_ubyte_to_float_color_tab[256];
 	ub = ((GLubyte) F_TO_I((f) * 255.0F))
 #endif
 
-static inline GLfloat INT_AS_FLT(GLint i)
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+GLfloat INT_AS_FLT(GLint i)
 {
    fi_type tmp;
    tmp.i = i;
    return tmp.f;
 }
 
-static inline GLfloat UINT_AS_FLT(GLuint u)
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+GLfloat UINT_AS_FLT(GLuint u)
 {
    fi_type tmp;
    tmp.u = u;
    return tmp.f;
 }
 
-static inline unsigned FLT_AS_UINT(float f)
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+unsigned FLT_AS_UINT(float f)
 {
    fi_type tmp;
    tmp.f = f;
@@ -192,8 +207,12 @@ static inline unsigned FLT_AS_UINT(float f)
  *
  * \param frac_bits   The number of bits used to store the fractional part.
  */
-static inline uint32_t
-U_FIXED(float value, uint32_t frac_bits)
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+uint32_t U_FIXED(float value, uint32_t frac_bits)
 {
    value *= (1 << frac_bits);
    return value < 0.0f ? 0 : (uint32_t) value;
@@ -204,8 +223,12 @@ U_FIXED(float value, uint32_t frac_bits)
  *
  * \param frac_bits   The number of bits used to store the fractional part.
  */
-static inline int32_t
-S_FIXED(float value, uint32_t frac_bits)
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+int32_t S_FIXED(float value, uint32_t frac_bits)
 {
    return (int32_t) (value * (1 << frac_bits));
 }
@@ -238,8 +261,12 @@ S_FIXED(float value, uint32_t frac_bits)
               (a)[3] == (b)[3])
 
 /** Test for equality (unsigned bytes) */
-static inline GLboolean
-TEST_EQ_4UBV(const GLubyte a[4], const GLubyte b[4])
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+GLboolean TEST_EQ_4UBV(const GLubyte a[4], const GLubyte b[4])
 {
 #if defined(__i386__)
    return *((const GLuint *) a) == *((const GLuint *) b);
@@ -259,8 +286,12 @@ do {                                \
 } while (0)
 
 /** Copy a 4-element unsigned byte vector */
-static inline void
-COPY_4UBV(GLubyte dst[4], const GLubyte src[4])
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+void COPY_4UBV(GLubyte dst[4], const GLubyte src[4])
 {
 #if defined(__i386__)
    *((GLuint *) dst) = *((GLuint *) src);
@@ -271,8 +302,12 @@ COPY_4UBV(GLubyte dst[4], const GLubyte src[4])
 }
 
 /** Copy a 4-element float vector */
-static inline void
-COPY_4FV(GLfloat dst[4], const GLfloat src[4])
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+void COPY_4FV(GLfloat dst[4], const GLfloat src[4])
 {
    /* memcpy seems to be most efficient */
    memcpy(dst, src, sizeof(GLfloat) * 4);
@@ -615,8 +650,12 @@ do {				\
  * default values to the remaining components.
  * The default values are chosen based on \p type.
  */
-static inline void
-COPY_CLEAN_4V_TYPE_AS_FLOAT(GLfloat dst[4], int sz, const GLfloat src[4],
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+void COPY_CLEAN_4V_TYPE_AS_FLOAT(GLfloat dst[4], int sz, const GLfloat src[4],
                             GLenum type)
 {
    switch (type) {
@@ -641,22 +680,34 @@ COPY_CLEAN_4V_TYPE_AS_FLOAT(GLfloat dst[4], int sz, const GLfloat src[4],
 /** \name Linear interpolation functions */
 /*@{*/
 
-static inline GLfloat
-LINTERP(GLfloat t, GLfloat out, GLfloat in)
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+GLfloat LINTERP(GLfloat t, GLfloat out, GLfloat in)
 {
    return out + t * (in - out);
 }
 
-static inline void
-INTERP_3F(GLfloat t, GLfloat dst[3], const GLfloat out[3], const GLfloat in[3])
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+void INTERP_3F(GLfloat t, GLfloat dst[3], const GLfloat out[3], const GLfloat in[3])
 {
    dst[0] = LINTERP( t, out[0], in[0] );
    dst[1] = LINTERP( t, out[1], in[1] );
    dst[2] = LINTERP( t, out[2], in[2] );
 }
 
-static inline void
-INTERP_4F(GLfloat t, GLfloat dst[4], const GLfloat out[4], const GLfloat in[4])
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+void INTERP_4F(GLfloat t, GLfloat dst[4], const GLfloat out[4], const GLfloat in[4])
 {
    dst[0] = LINTERP( t, out[0], in[0] );
    dst[1] = LINTERP( t, out[1], in[1] );
@@ -681,8 +732,13 @@ INTERP_4F(GLfloat t, GLfloat dst[4], const GLfloat out[4], const GLfloat in[4])
 #define MIN3( A, B, C ) ((A) < (B) ? MIN2(A, C) : MIN2(B, C))
 #define MAX3( A, B, C ) ((A) > (B) ? MAX2(A, C) : MAX2(B, C))
 
-static inline unsigned
-minify(unsigned value, unsigned levels)
+
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+unsigned minify(unsigned value, unsigned levels)
 {
     return MAX2(1, value >> levels);
 }
@@ -692,8 +748,12 @@ minify(unsigned value, unsigned levels)
  *
  * Note that this considers 0 a power of two.
  */
-static inline bool
-is_power_of_two(unsigned value)
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+bool is_power_of_two(unsigned value)
 {
    return (value & (value - 1)) == 0;
 }
@@ -726,8 +786,12 @@ is_power_of_two(unsigned value)
 
 
 /** Cross product of two 3-element vectors */
-static inline void
-CROSS3(GLfloat n[3], const GLfloat u[3], const GLfloat v[3])
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+void CROSS3(GLfloat n[3], const GLfloat u[3], const GLfloat v[3])
 {
    n[0] = u[1] * v[2] - u[2] * v[1];
    n[1] = u[2] * v[0] - u[0] * v[2];
@@ -736,54 +800,86 @@ CROSS3(GLfloat n[3], const GLfloat u[3], const GLfloat v[3])
 
 
 /** Dot product of two 2-element vectors */
-static inline GLfloat
-DOT2(const GLfloat a[2], const GLfloat b[2])
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+GLfloat DOT2(const GLfloat a[2], const GLfloat b[2])
 {
    return a[0] * b[0] + a[1] * b[1];
 }
 
-static inline GLfloat
-DOT3(const GLfloat a[3], const GLfloat b[3])
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+GLfloat DOT3(const GLfloat a[3], const GLfloat b[3])
 {
    return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
 }
 
-static inline GLfloat
-DOT4(const GLfloat a[4], const GLfloat b[4])
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+GLfloat DOT4(const GLfloat a[4], const GLfloat b[4])
 {
    return a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3];
 }
 
 
-static inline GLfloat
-LEN_SQUARED_3FV(const GLfloat v[3])
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+GLfloat LEN_SQUARED_3FV(const GLfloat v[3])
 {
    return DOT3(v, v);
 }
 
-static inline GLfloat
-LEN_SQUARED_2FV(const GLfloat v[2])
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+GLfloat LEN_SQUARED_2FV(const GLfloat v[2])
 {
    return DOT2(v, v);
 }
 
 
-static inline GLfloat
-LEN_3FV(const GLfloat v[3])
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+GLfloat LEN_3FV(const GLfloat v[3])
 {
    return sqrtf(LEN_SQUARED_3FV(v));
 }
 
-static inline GLfloat
-LEN_2FV(const GLfloat v[2])
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+GLfloat LEN_2FV(const GLfloat v[2])
 {
    return sqrtf(LEN_SQUARED_2FV(v));
 }
 
 
 /* Normalize a 3-element vector to unit length. */
-static inline void
-NORMALIZE_3FV(GLfloat v[3])
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+void NORMALIZE_3FV(GLfloat v[3])
 {
    GLfloat len = (GLfloat) LEN_SQUARED_3FV(v);
    if (len) {
@@ -796,8 +892,12 @@ NORMALIZE_3FV(GLfloat v[3])
 
 
 /** Test two floats have opposite signs */
-static inline GLboolean
-DIFFERENT_SIGNS(GLfloat x, GLfloat y)
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline
+#endif
+GLboolean DIFFERENT_SIGNS(GLfloat x, GLfloat y)
 {
    return signbit(x) != signbit(y);
 }

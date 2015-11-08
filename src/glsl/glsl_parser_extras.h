@@ -112,9 +112,15 @@ struct _mesa_glsl_parse_state {
                       unsigned required_glsl_es_version,
                       YYLTYPE *locp, const char *fmt, ...) PRINTFLIKE(5, 6);
 #else
+#	ifdef __GNUC__
+   bool check_version(unsigned required_glsl_version,
+					  unsigned required_glsl_es_version,
+					  YYLTYPE *locp,const char *fmt,...) ; // __attribute__((format(__printf__,4,5)))
+#	else
    bool check_version(unsigned required_glsl_version,
 					  unsigned required_glsl_es_version,
 					  YYLTYPE *locp,const char *fmt,...) PRINTFLIKE4;
+#	endif
 #endif
 
    bool check_precision_qualifiers_allowed(YYLTYPE *locp)

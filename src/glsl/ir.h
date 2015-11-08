@@ -26,6 +26,10 @@
 #ifndef IR_H
 #define IR_H
 
+#if defined(_MSC_VER) && _MSC_VER < 1800
+#pragma warning(disable:4291)
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -2526,5 +2530,9 @@ fprint_ir(FILE *f, const void *instruction);
 
 unsigned
 vertices_per_prim(GLenum prim);
+
+// #if defined(_MSC_VER) && _MSC_VER < 1800
+// #pragma warning(default:4291)
+// #endif
 
 #endif /* IR_H */

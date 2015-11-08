@@ -85,7 +85,12 @@ uint32_t _mesa_hash_string(const char *key);
 bool _mesa_key_string_equal(const void *a, const void *b);
 bool _mesa_key_pointer_equal(const void *a, const void *b);
 
-static inline uint32_t _mesa_hash_pointer(const void *pointer)
+#ifdef __S3E__
+STATIC S3E_INLINE
+#else
+static inline
+#endif
+uint32_t _mesa_hash_pointer(const void *pointer)
 {
    return _mesa_hash_data(&pointer, sizeof(pointer));
 }

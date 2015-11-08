@@ -39,7 +39,7 @@
 #include "glsl_types.h"
 #include "program/hash_table.h"
 
-#if defined(_MSC_VER) && (_MSC_VER < 1800)
+#if defined(_MSC_VER) && (_MSC_VER < 1800) && !defined(__S3E__)
 static int isnormal(double x)
 {
    return _fpclass(x) == _FPCLASS_NN || _fpclass(x) == _FPCLASS_PN;
@@ -52,7 +52,7 @@ static int isnormal(double x)
 }
 #endif
 
-#if defined(_MSC_VER) && _MSC_VER < 1800
+#if defined(_MSC_VER) && _MSC_VER < 1800 && !defined(__S3E__)
 static double copysign(double x, double y)
 {
    return _copysign(x, y);

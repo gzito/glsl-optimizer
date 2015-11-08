@@ -411,6 +411,8 @@ printf_length(const char *fmt, va_list untouched_args)
     */
    size = _vscprintf(fmt, args);
    (void)junk;
+#elif defined(__S3E__)
+	size = vsnprintf(NULL, 0, fmt, args);
 #else
    size = vsnprintf(&junk, 1, fmt, args);
 #endif

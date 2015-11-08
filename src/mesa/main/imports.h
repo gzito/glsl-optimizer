@@ -125,7 +125,7 @@ typedef union { GLfloat f; GLint i; GLuint u; } fi_type;
 #define atanhf(f) ((float) atanh(f))
 #endif
 
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) && !defined(__S3E__)
 #if _MSC_VER < 1800  /* Not req'd on VS2013 and above */
 static inline float truncf(float x) { return x < 0.0f ? ceilf(x) : floorf(x); }
 static inline float exp2f(float x) { return powf(2.0f, x); }
@@ -140,6 +140,13 @@ static inline int isblank(int ch) { return ch == ' ' || ch == '\t'; }
 #define strcasecmp(s1, s2) _stricmp(s1, s2)
 #endif
 #endif
+
+#if defined(_MSC_VER) && defined(__S3E__)
+#if _MSC_VER < 1800  /* Not req'd on VS2013 and above */
+STATIC S3E_INLINE float exp2f(float x) { return powf(2.0f, x); }
+STATIC S3E_INLINE float log2f(float x) { return logf(x) * 1.442695041f; }
+#endif
+#endif
 /*@}*/
 
 
@@ -152,8 +159,12 @@ static inline int isblank(int ch) { return ch == ' ' || ch == '\t'; }
 
 
 /** single-precision inverse square root */
-static inline float
-INV_SQRTF(float x)
+#ifdef __S3E__
+STATIC S3E_INLINE
+#else
+static inline
+#endif
+float INV_SQRTF(float x)
 {
    /* XXX we could try Quake's fast inverse square root function here */
    return 1.0F / sqrtf(x);
@@ -163,7 +174,12 @@ INV_SQRTF(float x)
 /***
  *** LOG2: Log base 2 of float
  ***/
-static inline GLfloat LOG2(GLfloat x)
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline 
+#endif
+GLfloat LOG2(GLfloat x)
 {
 #if 0
    /* This is pretty fast, but not accurate enough (only 2 fractional bits).
@@ -236,7 +252,12 @@ static inline GLfloat LOG2(GLfloat x)
 /**
  * Convert float to int by rounding to nearest integer, away from zero.
  */
-static inline int IROUND(float f)
+#ifdef __S3E__
+STATIC S3E_INLINE
+#else
+static inline
+#endif
+int IROUND(float f)
 {
    return (int) ((f >= 0.0F) ? (f + 0.5F) : (f - 0.5F));
 }
@@ -246,7 +267,12 @@ static inline int IROUND(float f)
 /**
  * Convert positive float to int by rounding to nearest integer.
  */
-static inline int IROUND_POS(float f)
+#ifdef __S3E__
+STATIC S3E_INLINE 
+#else
+static inline 
+#endif
+int IROUND_POS(float f)
 {
    assert(f >= 0.0F);
    return (int) (f + 0.5F);
@@ -259,7 +285,12 @@ static inline int IROUND_POS(float f)
 /**
  * Convert float to int using a fast method.  The rounding mode may vary.
  */
-static inline int F_TO_I(float f)
+#ifdef __S3E__
+STATIC S3E_INLINE
+#else
+static inline 
+#endif
+int F_TO_I(float f)
 {
 #if defined(USE_X86_ASM) && defined(__GNUC__) && defined(__i386__)
    int r;
@@ -281,7 +312,12 @@ static inline int F_TO_I(float f)
 
 
 /** Return (as an integer) floor of float */
-static inline int IFLOOR(float f)
+#ifdef __S3E__
+STATIC S3E_INLINE
+#else
+static inline 
+#endif
+int IFLOOR(float f)
 {
 #if defined(USE_X86_ASM) && defined(__GNUC__) && defined(__i386__)
    /*
@@ -313,7 +349,12 @@ static inline int IFLOOR(float f)
 
 
 /** Return (as an integer) ceiling of float */
-static inline int ICEIL(float f)
+#ifdef __S3E__
+STATIC S3E_INLINE
+#else
+static inline
+#endif
+int ICEIL(float f)
 {
 #if defined(USE_X86_ASM) && defined(__GNUC__) && defined(__i386__)
    /*
@@ -347,7 +388,12 @@ static inline int ICEIL(float f)
 /**
  * Is x a power of two?
  */
-static inline int
+#ifdef __S3E__
+STATIC S3E_INLINE
+#else
+static inline 
+#endif
+int
 _mesa_is_pow_two(int x)
 {
    return !(x & (x - 1));
@@ -367,7 +413,12 @@ _mesa_is_pow_two(int x)
  * results would be different depending on optimization
  * level used for build.
  */
-static inline int32_t
+#ifdef __S3E__
+STATIC S3E_INLINE
+#else
+static inline 
+#endif
+int32_t
 _mesa_next_pow_two_32(uint32_t x)
 {
 #ifdef HAVE___BUILTIN_CLZ
@@ -385,7 +436,12 @@ _mesa_next_pow_two_32(uint32_t x)
 #endif
 }
 
-static inline int64_t
+#ifdef __S3E__
+STATIC S3E_INLINE
+#else
+static inline 
+#endif
+int64_t
 _mesa_next_pow_two_64(uint64_t x)
 {
 #ifdef HAVE___BUILTIN_CLZLL
@@ -409,8 +465,12 @@ _mesa_next_pow_two_64(uint64_t x)
 /*
  * Returns the floor form of binary logarithm for a 32-bit integer.
  */
-static inline GLuint
-_mesa_logbase2(GLuint n)
+#ifdef __S3E__
+STATIC S3E_INLINE
+#else
+static inline 
+#endif
+GLuint _mesa_logbase2(GLuint n)
 {
 #ifdef HAVE___BUILTIN_CLZ
    return (31 - __builtin_clz(n | 1));
@@ -429,8 +489,12 @@ _mesa_logbase2(GLuint n)
 /**
  * Return 1 if this is a little endian machine, 0 if big endian.
  */
-static inline GLboolean
-_mesa_little_endian(void)
+#ifdef __S3E__
+STATIC S3E_INLINE
+#else
+static inline 
+#endif
+GLboolean _mesa_little_endian(void)
 {
    const GLuint ui = 1; /* intentionally not static */
    return *((const GLubyte *) &ui);
@@ -497,7 +561,12 @@ _mesa_bitcount_64(uint64_t n);
  *
  * Essentially ffs() in the reverse direction.
  */
-static inline unsigned int
+#ifdef __S3E__
+STATIC S3E_INLINE
+#else
+static inline
+#endif
+unsigned int
 _mesa_fls(unsigned int n)
 {
 #ifdef HAVE___BUILTIN_CLZ

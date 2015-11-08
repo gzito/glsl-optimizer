@@ -8,7 +8,7 @@ define __STDC__
 options
 {
 	optimise-speed=1
-	cxx11
+#	cxx11
 }
 
 files

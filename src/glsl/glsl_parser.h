@@ -242,7 +242,7 @@ extern int _mesa_glsl_debug;
      INLINE_TOK = 451,
      NOINLINE = 452,
      PUBLIC_TOK = 453,
-     STATIC = 454,
+     STATIC_TOK = 454,
      EXTERN = 455,
      EXTERNAL = 456,
      LONG_TOK = 457,

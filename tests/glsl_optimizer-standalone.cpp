@@ -682,7 +682,7 @@ int main (int argc, const char** argv)
 
 	printf ("\n** running %s tests for %s...\n", kTypeName[type], kAPIName[api]);
 
-	std::string inname = "basic-mul-inES.txt";
+	std::string inname = "ogre-inES.txt";
 	std::string outname = inname.substr (0,inname.size()-strlen(kApiIn[api])) + kApiOut[api];
 	std::string outnameMetal = inname.substr (0,inname.size()-strlen(kApiIn[api])) + kApiOutMetal[api];
 	const bool useMetal = (api == 1);
