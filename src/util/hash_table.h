@@ -86,7 +86,7 @@ bool _mesa_key_string_equal(const void *a, const void *b);
 bool _mesa_key_pointer_equal(const void *a, const void *b);
 
 #ifdef __S3E__
-STATIC S3E_INLINE
+S3E_INLINE
 #else
 static inline
 #endif

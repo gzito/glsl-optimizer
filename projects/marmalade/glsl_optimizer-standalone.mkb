@@ -4,7 +4,7 @@ options
 {
 	s3e-data-dir=../../tests
 	optimise-speed=1
-	cxx11
+#	cxx11
 }
 
 subprojects

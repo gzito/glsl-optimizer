@@ -167,7 +167,7 @@ extern GLfloat _mesa_ubyte_to_float_color_tab[256];
 #endif
 
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -179,7 +179,7 @@ GLfloat INT_AS_FLT(GLint i)
 }
 
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -191,7 +191,7 @@ GLfloat UINT_AS_FLT(GLuint u)
 }
 
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -208,7 +208,7 @@ unsigned FLT_AS_UINT(float f)
  * \param frac_bits   The number of bits used to store the fractional part.
  */
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -224,7 +224,7 @@ uint32_t U_FIXED(float value, uint32_t frac_bits)
  * \param frac_bits   The number of bits used to store the fractional part.
  */
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -262,7 +262,7 @@ int32_t S_FIXED(float value, uint32_t frac_bits)
 
 /** Test for equality (unsigned bytes) */
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -287,7 +287,7 @@ do {                                \
 
 /** Copy a 4-element unsigned byte vector */
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -303,7 +303,7 @@ void COPY_4UBV(GLubyte dst[4], const GLubyte src[4])
 
 /** Copy a 4-element float vector */
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -651,7 +651,7 @@ do {				\
  * The default values are chosen based on \p type.
  */
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -681,7 +681,7 @@ void COPY_CLEAN_4V_TYPE_AS_FLOAT(GLfloat dst[4], int sz, const GLfloat src[4],
 /*@{*/
 
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -691,7 +691,7 @@ GLfloat LINTERP(GLfloat t, GLfloat out, GLfloat in)
 }
 
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -703,7 +703,7 @@ void INTERP_3F(GLfloat t, GLfloat dst[3], const GLfloat out[3], const GLfloat in
 }
 
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -734,7 +734,7 @@ void INTERP_4F(GLfloat t, GLfloat dst[4], const GLfloat out[4], const GLfloat in
 
 
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -749,7 +749,7 @@ unsigned minify(unsigned value, unsigned levels)
  * Note that this considers 0 a power of two.
  */
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -787,7 +787,7 @@ bool is_power_of_two(unsigned value)
 
 /** Cross product of two 3-element vectors */
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -801,7 +801,7 @@ void CROSS3(GLfloat n[3], const GLfloat u[3], const GLfloat v[3])
 
 /** Dot product of two 2-element vectors */
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -811,7 +811,7 @@ GLfloat DOT2(const GLfloat a[2], const GLfloat b[2])
 }
 
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -821,7 +821,7 @@ GLfloat DOT3(const GLfloat a[3], const GLfloat b[3])
 }
 
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -832,7 +832,7 @@ GLfloat DOT4(const GLfloat a[4], const GLfloat b[4])
 
 
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -842,7 +842,7 @@ GLfloat LEN_SQUARED_3FV(const GLfloat v[3])
 }
 
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -853,7 +853,7 @@ GLfloat LEN_SQUARED_2FV(const GLfloat v[2])
 
 
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -863,7 +863,7 @@ GLfloat LEN_3FV(const GLfloat v[3])
 }
 
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -875,7 +875,7 @@ GLfloat LEN_2FV(const GLfloat v[2])
 
 /* Normalize a 3-element vector to unit length. */
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif
@@ -893,7 +893,7 @@ void NORMALIZE_3FV(GLfloat v[3])
 
 /** Test two floats have opposite signs */
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline
 #endif

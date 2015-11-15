@@ -141,12 +141,17 @@ static inline int isblank(int ch) { return ch == ' ' || ch == '\t'; }
 #endif
 #endif
 
-#if defined(_MSC_VER) && defined(__S3E__)
-#if _MSC_VER < 1800  /* Not req'd on VS2013 and above */
-STATIC S3E_INLINE float exp2f(float x) { return powf(2.0f, x); }
-STATIC S3E_INLINE float log2f(float x) { return logf(x) * 1.442695041f; }
+#if defined(__S3E__)
+#if defined(_MSC_VER)
+	#if _MSC_VER < 1800  /* Not req'd on VS2013 and above */
+		S3E_INLINE float exp2f(float x) { return powf(2.0f, x); }
+		S3E_INLINE float log2f(float x) { return logf(x) * 1.442695041f; }
+	#endif
+#elif defined(__GNUC__)
+	S3E_INLINE float exp2f(float x) { return powf(2.0f, x); }
 #endif
 #endif
+
 /*@}*/
 
 
@@ -160,7 +165,7 @@ STATIC S3E_INLINE float log2f(float x) { return logf(x) * 1.442695041f; }
 
 /** single-precision inverse square root */
 #ifdef __S3E__
-STATIC S3E_INLINE
+S3E_INLINE
 #else
 static inline
 #endif
@@ -175,7 +180,7 @@ float INV_SQRTF(float x)
  *** LOG2: Log base 2 of float
  ***/
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline 
 #endif
@@ -253,7 +258,7 @@ GLfloat LOG2(GLfloat x)
  * Convert float to int by rounding to nearest integer, away from zero.
  */
 #ifdef __S3E__
-STATIC S3E_INLINE
+S3E_INLINE
 #else
 static inline
 #endif
@@ -268,7 +273,7 @@ int IROUND(float f)
  * Convert positive float to int by rounding to nearest integer.
  */
 #ifdef __S3E__
-STATIC S3E_INLINE 
+S3E_INLINE 
 #else
 static inline 
 #endif
@@ -286,7 +291,7 @@ int IROUND_POS(float f)
  * Convert float to int using a fast method.  The rounding mode may vary.
  */
 #ifdef __S3E__
-STATIC S3E_INLINE
+S3E_INLINE
 #else
 static inline 
 #endif
@@ -313,7 +318,7 @@ int F_TO_I(float f)
 
 /** Return (as an integer) floor of float */
 #ifdef __S3E__
-STATIC S3E_INLINE
+S3E_INLINE
 #else
 static inline 
 #endif
@@ -350,7 +355,7 @@ int IFLOOR(float f)
 
 /** Return (as an integer) ceiling of float */
 #ifdef __S3E__
-STATIC S3E_INLINE
+S3E_INLINE
 #else
 static inline
 #endif
@@ -389,7 +394,7 @@ int ICEIL(float f)
  * Is x a power of two?
  */
 #ifdef __S3E__
-STATIC S3E_INLINE
+S3E_INLINE
 #else
 static inline 
 #endif
@@ -414,7 +419,7 @@ _mesa_is_pow_two(int x)
  * level used for build.
  */
 #ifdef __S3E__
-STATIC S3E_INLINE
+S3E_INLINE
 #else
 static inline 
 #endif
@@ -437,7 +442,7 @@ _mesa_next_pow_two_32(uint32_t x)
 }
 
 #ifdef __S3E__
-STATIC S3E_INLINE
+S3E_INLINE
 #else
 static inline 
 #endif
@@ -466,7 +471,7 @@ _mesa_next_pow_two_64(uint64_t x)
  * Returns the floor form of binary logarithm for a 32-bit integer.
  */
 #ifdef __S3E__
-STATIC S3E_INLINE
+S3E_INLINE
 #else
 static inline 
 #endif
@@ -490,7 +495,7 @@ GLuint _mesa_logbase2(GLuint n)
  * Return 1 if this is a little endian machine, 0 if big endian.
  */
 #ifdef __S3E__
-STATIC S3E_INLINE
+S3E_INLINE
 #else
 static inline 
 #endif
@@ -562,7 +567,7 @@ _mesa_bitcount_64(uint64_t n);
  * Essentially ffs() in the reverse direction.
  */
 #ifdef __S3E__
-STATIC S3E_INLINE
+S3E_INLINE
 #else
 static inline
 #endif
